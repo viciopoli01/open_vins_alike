@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.3)
 project(ov_core)
 
+find_package(ALIKE_cpp REQUIRED)
+
 # Include libraries (if we don't have opencv 4, then fallback to opencv 3)
 # The OpenCV version needs to match the one used by cv_bridge otherwise you will get a segmentation fault!
 find_package(Eigen3 REQUIRED)

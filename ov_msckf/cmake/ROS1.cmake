@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.3)
 
+find_package(ALIKE_cpp REQUIRED)
 # Find ROS build system
 find_package(catkin QUIET COMPONENTS roscpp rosbag tf std_msgs geometry_msgs sensor_msgs nav_msgs visualization_msgs image_transport cv_bridge ov_core ov_init)
 
@@ -28,6 +29,9 @@ include_directories(
         ${Boost_INCLUDE_DIRS}
         ${CERES_INCLUDE_DIRS}
         ${catkin_INCLUDE_DIRS}
+        ${TORCH_INCLUDE_DIRS}
+        ${OpenCV_INCLUDE_DIRS}
+        ${ALIKE_cpp_INCLUDE_DIRS}
 )
 
 # Set link libraries used by all binaries
@@ -36,6 +40,9 @@ list(APPEND thirdparty_libraries
         ${OpenCV_LIBRARIES}
         ${CERES_LIBRARIES}
         ${catkin_LIBRARIES}
+        ${TORCH_LIBRARIES}
+        ${OpenCV_LIBS}
+        ALIKE_cpp::get_patches_cuda
 )
 
 # If we are not building with ROS then we need to manually link to its headers

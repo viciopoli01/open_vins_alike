@@ -62,6 +62,10 @@ public:
    */
   void feed_measurement_simulation(double timestamp, const std::vector<int> &camids,
                                    const std::vector<std::vector<std::pair<size_t, Eigen::VectorXf>>> &feats);
+
+
+  void create_feat_extractor(const cv::Ptr <ExtractorBase> &extractor) override {};
+
 };
 
 } // namespace ov_core

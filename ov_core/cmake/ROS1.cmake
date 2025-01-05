@@ -1,5 +1,9 @@
 cmake_minimum_required(VERSION 3.3)
 
+find_package(ALIKE_cpp REQUIRED)
+message(STATUS "Found ALIKE_cpp version: ${ALIKE_cpp_VERSION}")
+message(STATUS "Found ALIKE_cpp include: ${ALIKE_cpp_INCLUDE_DIRS}")
+
 # Find ROS build system
 find_package(catkin QUIET COMPONENTS roscpp rosbag sensor_msgs cv_bridge)
 
@@ -26,6 +30,9 @@ include_directories(
         ${EIGEN3_INCLUDE_DIR}
         ${Boost_INCLUDE_DIRS}
         ${catkin_INCLUDE_DIRS}
+        ${TORCH_INCLUDE_DIRS}
+        ${OpenCV_INCLUDE_DIRS}
+        ${ALIKE_cpp_INCLUDE_DIRS}
 )
 
 # Set link libraries used by all binaries
@@ -33,6 +40,9 @@ list(APPEND thirdparty_libraries
         ${Boost_LIBRARIES}
         ${OpenCV_LIBRARIES}
         ${catkin_LIBRARIES}
+        ${TORCH_LIBRARIES}
+        ${OpenCV_LIBS}
+        ALIKE_cpp::get_patches_cuda
 )
 
 ##################################################
